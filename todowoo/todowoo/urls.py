@@ -16,6 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from todo import views
+from drf_spectacular.views import (
+    SpectacularAPIView,
+    SpectacularSwaggerView,
+    SpectacularRedocView
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -33,4 +38,6 @@ urlpatterns = [
     path('todo/<int:todo_pk>', views.viewtodo, name='viewtodo'),
     path('todo/<int:todo_pk>/complete', views.completetodo, name='completetodo'),
     path('todo/<int:todo_pk>/delete', views.deletetodo, name='deletetodo'),
+    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
+    path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='docs'),
 ]

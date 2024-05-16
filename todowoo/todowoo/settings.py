@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'todo',
+    'drf_spectacular',
+
 ]
 
 MIDDLEWARE = [
@@ -121,6 +123,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGIN_URL = '/login'
+
+REST_FRAMEWORK = {
+
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
